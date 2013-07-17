@@ -43,6 +43,7 @@ $(function() {
     },
 
     open: function() {
+      console.log(this.model);
       this.model.trigger('open', this.model);
       this.model.set('mentioned', false);
       this.model.set('activity', 0);
@@ -101,6 +102,7 @@ $(function() {
       var users = this.model.get('users');
       if (!users.ready) this.getUsers(users);
       this.scrollBottom();
+      $('label[for=input]').text(this.model.get('nick'));
 
       socket.emit('open', this.model.id, this.model.get('number'));
     },
